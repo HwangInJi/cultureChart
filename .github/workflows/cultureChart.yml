@@ -51,17 +51,6 @@ jobs:
         git config --global user.email "dlswl1993@gmail.com"
         git config --global user.name "HwangInJi" 
         git add concert/melon/chart_M_concert10_*.json
-        git add concert/interpark/chart_I_concert10_*.json
-        git add concert/ticketlink/chart_T_concert10_*.json
-        git add concert/yes24/chart_Y_concert10_*.json
-        git add exhibiton/melon/chart_M_concert10_*.json
-        git add exhibiton/interpark/chart_I_concert10_*.json
-        git add exhibiton/ticketlink/chart_T_concert10_*.json
-        git add exhibiton/yes24/chart_Y_concert10_*.json
-        git add musical/melon/chart_M_concert10_*.json
-        git add musical/interpark/chart_I_concert10_*.json
-        git add musical/ticketlink/chart_T_concert10_*.json
-        git add musical/yes24/chart_Y_concert10_*.json
         git commit -m "차트 수집 완료"
 
     - name: push
