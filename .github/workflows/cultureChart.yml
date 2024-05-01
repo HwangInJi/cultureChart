@@ -41,10 +41,7 @@ jobs:
        
     - name: run file
       run: |
-        python3 pyBillboardChart.py
-        python3 pyBugsChart.py
-        python3 pyMelonChart.py
-        python3 pyAppleChart.py
+        python3 pychart_M_concert10.py
 
     - name: commits
       run : |
