@@ -41,7 +41,6 @@ try:
     )
     exhibition_tab_button.click()
     print("Clicked '콘서트/페스티벌' tab.")
-    time.sleep(3)  # 페이지가 완전히 로드될 때까지 대기
 except Exception as e:
     print("Error clicking '콘서트/페스티벌' tab:", e)
 
