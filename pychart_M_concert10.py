@@ -2,16 +2,10 @@ import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options as ChromeOptions
-from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from datetime import datetime
 import time
-
-# 현재 날짜 가져오기
-current_date = datetime.now().strftime("%Y-%m-%d")
-filename = f"chart_T_concert10_{current_date}.json"
 
 # 웹 드라이버 설정
 options = ChromeOptions()
@@ -29,21 +23,6 @@ time.sleep(5)  # 페이지 로딩 대기
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 time.sleep(2)
 
-# 페이지가 완전히 로드될 때까지 대기
-WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.CLASS_NAME, "box_ranking_list"))
-)
-
-# "전시" 탭 버튼을 찾아서 클릭하기
-try:
-    exhibition_tab_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//button[text()='콘서트/페스티벌']"))
-    )
-    exhibition_tab_button.click()
-    print("Clicked '콘서트/페스티벌' tab.")
-except Exception as e:
-    print("Error clicking '콘서트/페스티벌' tab:", e)
-
 # 필요한 데이터 수집
 data = []
 rows = driver.find_elements(By.CSS_SELECTOR, '.tbl.tbl_style02 tbody tr')
@@ -58,12 +37,16 @@ for row in rows:
         'Venue': venue,
         'ImageURL': image
     })
-
+    
 # JSON 파일로 저장
 current_date = datetime.now().strftime("%Y-%m-%d")
-filename = f"chart_M_concert10_{current_date}.json"
+filename = f"melon_ticket_ranking_{current_date}.json"
 with open(filename, 'w', encoding='utf-8') as file:
     json.dump(data, file, ensure_ascii=False, indent=4)
-
+    
 # 드라이버 종료
 driver.quit()
+
+# 출력 결과 확인
+for item in data:
+    print(item)
