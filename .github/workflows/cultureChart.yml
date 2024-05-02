@@ -42,9 +42,9 @@ jobs:
       
     - name: run file
       run: |
-        # python pychart_M_concert10.py
+        python pychart_M_concert10.py
         python pychart_M_exhibiton10.py
-        # python pychart_T_concert10.py
+        python pychart_T_concert10.py
 
     - name: commits
       run : |
