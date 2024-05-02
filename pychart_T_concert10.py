@@ -16,8 +16,7 @@ filename = f"chart_T_concert10_{current_date}.json"
 
 # 웹드라이버 설치
 options = ChromeOptions()
-service = ChromeService(executable_path=ChromeDriverManager().install())
-browser = webdriver.Chrome(service=service, options=options)
+browser = webdriver.Chrome(options=options)
 browser.get("https://www.ticketlink.co.kr/ranking")
 
 # 페이지가 완전히 로드될 때까지 대기
