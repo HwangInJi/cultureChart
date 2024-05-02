@@ -16,6 +16,7 @@ filename = f"chart_T_concert10_{current_date}.json"
 
 # 웹드라이버 설치
 options = ChromeOptions()
+options.add_argument("--headless")
 browser = webdriver.Chrome(options=options)
 browser.get("https://www.ticketlink.co.kr/ranking")
 
