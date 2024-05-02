@@ -12,7 +12,7 @@ from datetime import datetime
 
 # 현재 날짜 가져오기
 current_date = datetime.now().strftime("%Y-%m-%d")
-filename = f"ticketconcert/chart_T_concert10_{current_date}.json"
+filename = f"ticketconcert/chart_T_concert10{current_date}.json"
 
 # 웹드라이버 설치
 options = ChromeOptions()
