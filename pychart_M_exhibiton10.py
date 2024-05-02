@@ -10,6 +10,9 @@ from datetime import datetime
 import time
 import json
 
+# 현재 날짜 가져오기
+current_date = datetime.now().strftime("%Y-%m-%d")
+filename = f"pychart_M_exhibiton10{current_date}.json"
 
 # 웹 드라이버 설정
 options = ChromeOptions()
