@@ -27,22 +27,18 @@ time.sleep(5)  # 페이지 로딩 대기
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 time.sleep(2)
 
-# 페이지가 완전히 로드될 때까지 대기
-WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.CLASS_NAME, "box_ranking_list"))
-)
-
 # "전시" 탭 버튼을 찾아서 클릭하기
 try:
-    exhibition_tab_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//button[text()='전시/클래식/기타']"))
-    )
+    # exhibition_tab_button = WebDriverWait(driver, 10).until(
+    #     EC.element_to_be_clickable((By.XPATH, "//button[text()='전시/클래식/기타']"))
+    # )
+    exhibition_tab_button = driver.find_element(By.XPATH, "//button[text()='전시/클래식/기타']")
     exhibition_tab_button.click()
     print("Clicked '전시/클래식/기타' tab.")
     time.sleep(3)  # 페이지가 완전히 로드될 때까지 대기
 except Exception as e:
     print("Error clicking '전시/클래식/기타' tab:", e)
-
+    
 # 필요한 데이터 수집
 data = []
 rows = driver.find_elements(By.CSS_SELECTOR, '.tbl.tbl_style02 tbody tr')
