@@ -22,7 +22,7 @@ browser.get("https://tickets.interpark.com/contents/ranking")
 
 # 페이지가 완전히 로드될 때까지 대기
 WebDriverWait(browser, 10).until(
-    EC.presence_of_element_located((By.CLASS_NAME, "ranking_product"))
+    EC.presence_of_element_located((By.CLASS_NAME, "RadioButton_wrap__761f0"))
 )
 
 # "콘서트" 탭 버튼을 찾아서 클릭하기
