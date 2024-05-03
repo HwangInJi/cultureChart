@@ -82,9 +82,8 @@ for item in items:
     concerts_data.append(concert_info)
 
 # JSON 파일로 저장
-current_date = datetime.now().strftime("%Y-%m-%d")
 with open(filename, 'w', encoding='utf-8') as file:
-    json.dump(data, file, ensure_ascii=False, indent=4)
+    json.dump(concerts_data, file, ensure_ascii=False, indent=4)
     
 # 브라우저 닫기
 browser.quit()
