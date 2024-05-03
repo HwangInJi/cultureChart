@@ -58,10 +58,9 @@ for row in rows:
         'ImageURL': image
     })
 
-# JSON 파일로 저장
-current_date = datetime.now().strftime("%Y-%m-%d")
-with open(filename, 'w', encoding='utf-8') as file:
-    json.dump(data, file, ensure_ascii=False, indent=4)
+# 데이터를 JSON 파일로 저장
+with open(filename, 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=4)
 
 # 드라이버 종료
 driver.quit()
