@@ -14,15 +14,15 @@ from datetime import datetime
 current_date = datetime.now().strftime("%Y-%m-%d")
 filename = f"interparkconcert/pychart_I_concert10{current_date}.json"
 
-# 웹드라이버 설정
+# 웹드라이버 설치
 options = ChromeOptions()
 options.add_argument("--headless")
 browser = webdriver.Chrome(options=options)
 browser.get("https://tickets.interpark.com/contents/ranking")
 
-# RadioButton_wrap__761f0 클래스를 가진 div 요소를 찾기
+# 페이지가 완전히 로드될 때까지 대기
 WebDriverWait(browser, 10).until(
-    EC.presence_of_element_located((By.CLASS_NAME, "RadioButton_wrap__761f0"))
+    EC.presence_of_element_located((By.CLASS_NAME, "ranking_product"))
 )
 
 # "콘서트" 탭 버튼을 찾아서 클릭하기
@@ -53,9 +53,7 @@ page_source = browser.page_source
 # BeautifulSoup을 사용하여 HTML 파싱
 soup = BeautifulSoup(page_source, 'html.parser')
 
-# Find the parent container for ranking items
-ranking_container = soup.find('div', class_='responsive-ranking-list_rankingListWrap__GM0yK')
-
+# 데이터 추
 concerts = []
 
 # 1-3위 데이터 추출
