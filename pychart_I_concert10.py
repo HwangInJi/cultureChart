@@ -35,11 +35,15 @@ except Exception as e:
     print("Error clicking '콘서트' tab:", e)
 
 # 월간 카테고리 선택
-monthly_tab_button = WebDriverWait(browser, 10).until(
-    EC.presence_of_element_located((By.XPATH, "//a[contains(@categoryid, '3') and contains(text(), '월간')]"))
-)
-monthly_tab_button.click()
-time.sleep(2)  # 월간 카테고리 로딩 대기
+try:
+    monthly_tab_button = WebDriverWait(browser, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//menu[@class='stats-info_subWrap__ji32u']//button[@name='월간']"))
+    )
+    monthly_tab_button.click()
+    print("Clicked '월간' tab.")
+    time.sleep(2)  # 월간 카테고리 로딩 대기
+except Exception as e:
+    print("Error clicking '월간' tab:", e)
 
 page_source = browser.page_source
 soup = BeautifulSoup(page_source, 'html.parser')
