@@ -20,9 +20,6 @@ options.add_argument("--headless")
 browser = webdriver.Chrome(options=options)
 browser.get("https://tickets.interpark.com/contents/ranking")
 
-# RadioButton_wrap__761f0 클래스를 가진 div 요소를 찾기
-search_box = browser.find_element(By.CLASS_NAME, "RadioButton_wrap__761f0")
-
 # "콘서트" 탭 버튼을 찾아서 클릭하기
 try:
     concert_tab_button = WebDriverWait(browser, 10).until(
@@ -34,14 +31,14 @@ try:
 except Exception as e:
     print("Error clicking '콘서트' tab:", e)
 
-# 월간 카테고리 선택
+# "월간" 탭 버튼을 찾아서 클릭하기
 try:
     monthly_tab_button = WebDriverWait(browser, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//menu[@class='stats-info_subWrap__ji32u']//button[@name='월간']"))
+        EC.element_to_be_clickable((By.XPATH, "//button[text()='월간']"))
     )
     monthly_tab_button.click()
     print("Clicked '월간' tab.")
-    time.sleep(2)  # 월간 카테고리 로딩 대기
+    time.sleep(3)  # 페이지가 완전히 로드될 때까지 대기
 except Exception as e:
     print("Error clicking '월간' tab:", e)
 
