@@ -10,6 +10,9 @@ from datetime import datetime
 import time
 import json
 
+# 현재 날짜 가져오기
+current_date = datetime.now().strftime("%Y-%m-%d")
+filename = f"melonconcert/pychart_M_concert10{current_date}.json"
 
 # 웹 드라이버 설정
 options = ChromeOptions()
@@ -45,7 +48,6 @@ for row in rows:
 
 # JSON 파일로 저장
 current_date = datetime.now().strftime("%Y-%m-%d")
-filename = f"melonconcert/pychart_M_concert10{current_date}.json"
 with open(filename, 'w', encoding='utf-8') as file:
     json.dump(data, file, ensure_ascii=False, indent=4)
 
