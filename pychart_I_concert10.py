@@ -36,20 +36,23 @@ try:
 except Exception as e:
     print("Error clicking '콘서트' tab:", e)
 
-# "월간" 탭 버튼을 찾아서 클릭하기
+# "월간" 탭으로 변경하기
 try:
-    WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), '월간')]"))).click()
+    monthly_tab_button = WebDriverWait(browser, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), '월간')]"))
+    )
+    monthly_tab_button.click()
     print("Clicked '월간' tab.")
-    time.sleep(3)
+    time.sleep(3)  # 페이지가 완전히 로드될 때까지 대기
 except Exception as e:
     print("Error clicking '월간' tab:", e)
 
+# 페이지 소스 가져오기
 page_source = browser.page_source
 soup = BeautifulSoup(page_source, 'html.parser')
 
-# Find the parent container for ranking items
+# 월간 콘서트 순위 정보 추출
 ranking_container = soup.find('div', class_='responsive-ranking-list_rankingListWrap__GM0yK')
-
 concerts = []
 
 # 1-3위 데이터 추출
