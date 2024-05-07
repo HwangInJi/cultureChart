@@ -30,7 +30,7 @@ try:
     )
     concert_tab_button.click()
     print("Clicked '콘서트' tab.")
-    time.sleep(5)  # 페이지가 완전히 로드될 때까지 대기
+    time.sleep(3)  # 페이지가 완전히 로드될 때까지 대기
 except Exception as e:
     print("Error clicking '콘서트' tab:", e)
 
@@ -38,7 +38,7 @@ except Exception as e:
 try:
     WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[text()='월간']"))).click()
     print("Clicked '월간' tab.")
-    time.sleep(5)
+    time.sleep(3)
 except Exception as e:
     print("Error clicking '월간' tab:", e)
 
