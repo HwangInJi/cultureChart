@@ -68,7 +68,7 @@ for ranking_item in ranking_container.find_all('div', class_='responsive-ranking
     concerts.append(concert_data)
 
 # 4-10위 콘서트 순위 정보 추출
-rank_list_4_to_10 = soup.find_all('div', class_='responsive-ranking-list_rankingItem__PuQPJ')[3:10]  # 4위부터 10위까지의 항목 추출
+rank_list_4_to_10 = soup.find_all('div', class_='responsive-ranking-list_rankingItem__PuQPJ')[3:10]
 for ranking_item in rank_list_4_to_10:
     rank = ranking_item.find('div', class_='RankingBadge_badgeNumberColor__d45a0').text.strip()
     concert_name = ranking_item.find('li', class_='responsive-ranking-list_goodsName__aHHGY').text.strip()
