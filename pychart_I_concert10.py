@@ -22,6 +22,7 @@ webdriver_path = webdriver_manager.driver
 # 웹드라이버 설정
 options = ChromeOptions()
 options.add_argument("--headless")
+options.add_argument("--start-fullscreen")
 browser = webdriver.Chrome(options=options)  # ChromeOptions를 전달합니다.
 browser.get("https://tickets.interpark.com/contents/ranking")
 
