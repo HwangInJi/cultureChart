@@ -48,7 +48,7 @@ page_source = browser.page_source
 soup = BeautifulSoup(page_source, 'html.parser')
 
 # Find the parent container for ranking items
-ranking_container = soup.find('div', class_='responsive-ranking-list_rankingListWrap__GM0yK')
+ranking_container = soup.find('div', class_='responsive-ranking-list_wrap__y9FRY')
 
 concerts = []
 
