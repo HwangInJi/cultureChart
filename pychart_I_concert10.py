@@ -22,13 +22,13 @@ webdriver_path = webdriver_manager.driver
 # 웹드라이버 설정
 options = ChromeOptions()
 options.add_argument("--headless")
-browser = webdriver.Chrome(executable_path=webdriver_path, options=options)
+browser = webdriver.Chrome(options=options)  # ChromeOptions를 전달합니다.
 browser.get("https://tickets.interpark.com/contents/ranking")
 
 # "콘서트" 탭 버튼을 찾아서 클릭하기
 try:
     concert_tab_button = WebDriverWait(browser, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//button[contents(text(), '콘서트')]"))
+        EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), '콘서트')]"))
     )
     concert_tab_button.click()
     print("Clicked '콘서트' tab.")
@@ -38,7 +38,7 @@ except Exception as e:
 
 # "월간" 탭 버튼을 찾아서 클릭하기
 try:
-    WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contents(text(), '월간')]"))).click()
+    WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), '월간')]"))).click()
     print("Clicked '월간' tab.")
     time.sleep(3)
 except Exception as e:
