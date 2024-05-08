@@ -50,7 +50,7 @@ soup = BeautifulSoup(page_source, 'html.parser')
 # Find the parent container for ranking items
 ranking_container = soup.find('div', class_='responsive-ranking-list_rankingListWrap__GM0yK')
 
-exhibiton = []
+concerts = []
 
 # 1-3위 데이터 추출
 for ranking_item in ranking_container.find_all('div', class_='responsive-ranking-list_rankingItem__PuQPJ'):
@@ -65,10 +65,10 @@ for ranking_item in ranking_container.find_all('div', class_='responsive-ranking
         'Venue': venue,
         'ImageURL': image_url
     }
-    exhibiton.append(concert_data)
+    concerts.append(concert_data)
 
 # 4-10위 콘서트 순위 정보 추출
-rank_list_4_to_10 = soup.find_all('div', class_='responsive-ranking-list_rankingItem__PuQPJ')[3:10]
+rank_list_4_to_10 = soup.find_all('div', class_='responsive-ranking-list_rankingItem__PuQPJ')[3:10]  # 4위부터 10위까지의 항목 추출
 for ranking_item in rank_list_4_to_10:
     rank = ranking_item.find('div', class_='RankingBadge_badgeNumberColor__d45a0').text.strip()
     concert_name = ranking_item.find('li', class_='responsive-ranking-list_goodsName__aHHGY').text.strip()
@@ -81,11 +81,11 @@ for ranking_item in rank_list_4_to_10:
         'Venue': venue,
         'ImageURL': image_url
     }
-    exhibiton.append(concert_data)
-
+    concerts.append(concert_data)
+    
 # json파일로 저장
 with open(filename, 'w', encoding='utf-8') as file:
-    json.dump(exhibiton, file, ensure_ascii=False, indent=4)
+    json.dump(concerts, file, ensure_ascii=False, indent=4)
 
 # 출력
 for concert_data in concerts:
