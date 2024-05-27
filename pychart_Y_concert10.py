@@ -53,8 +53,8 @@ if rank_best_div:
         concert_link = concert_div.find('a', href=True)
         if concert_link:
             concert_info['title'] = concert_link['title']
-            concert_info['image_url'] = concert_link.find('img')['src']
-            concert_info['date_and_location'] = concert_link.find('p', class_='rlb-sub-tit').get_text(strip=True)
+            concert_info['ImageURL'] = concert_link.find('img')['src']
+            concert_info['Venue'] = concert_link.find('p', class_='rlb-sub-tit').get_text(strip=True)
             concert_info['rank'] = concert_link.find('p', class_='rank-best-number').find('span').get_text(strip=True)
             concerts_data.append(concert_info)
 
@@ -76,8 +76,8 @@ for item in items:
         rank = 'No rank provided'
 
     concert_info['title'] = title_link.text.strip() if title_link else 'No title provided'
-    concert_info['image_url'] = image['src'] if image else 'No image provided'
-    concert_info['date_and_location'] = date_location.get_text(strip=True) if date_location else 'No date and location provided'
+    concert_info['ImageURL'] = image['src'] if image else 'No image provided'
+    concert_info['Venue'] = date_location.get_text(strip=True) if date_location else 'No date and location provided'
     concert_info['rank'] = rank
     concerts_data.append(concert_info)
 
