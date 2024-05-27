@@ -65,8 +65,8 @@ for track in tracks:
     music_data.append({
         "rank": rank,
         "title": title,
-        "artist": place,
-        "imageURL": image_url
+        "Venue": place,
+        "ImageURL": image_url
     })
 
 # 데이터를 JSON 파일로 저장
