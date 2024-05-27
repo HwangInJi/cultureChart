@@ -53,8 +53,8 @@ if rank_best_div:
         event_link = event_div.find('a', href=True)
         if event_link:
             event_info['title'] = event_link['title']
-            event_info['image_url'] = event_link.find('img')['src']
-            event_info['date_and_location'] = event_link.find('p', class_='rlb-sub-tit').get_text(strip=True)
+            event_info['ImageURL'] = event_link.find('img')['src']
+            event_info['Venue'] = event_link.find('p', class_='rlb-sub-tit').get_text(strip=True)
             event_info['rank'] = event_link.find('p', class_='rank-best-number').find('span').get_text(strip=True)
             events_data.append(event_info)
 
@@ -77,8 +77,8 @@ if rank_list:
             rank = 'No rank provided'
 
         event_info['title'] = title_link.text.strip() if title_link else 'No title provided'
-        event_info['image_url'] = image['src'] if image else 'No image provided'
-        event_info['date_and_location'] = date_location.get_text(strip=True) if date_location else 'No date and location provided'
+        event_info['ImageURL'] = image['src'] if image else 'No image provided'
+        event_info['Venue'] = date_location.get_text(strip=True) if date_location else 'No date and location provided'
         event_info['rank'] = rank
         events_data.append(event_info)
 
