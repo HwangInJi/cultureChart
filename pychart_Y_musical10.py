@@ -53,8 +53,8 @@ if rank_best_div:
         musical_link = musical_div.find('a', href=True)
         if musical_link:
             musical_info['title'] = musical_link['title']
-            musical_info['image_url'] = musical_link.find('img')['src']
-            musical_info['date_and_location'] = musical_link.find('p', class_='rlb-sub-tit').get_text(strip=True)
+            musical_info['ImageURL'] = musical_link.find('img')['src']
+            musical_info['Venue'] = musical_link.find('p', class_='rlb-sub-tit').get_text(strip=True)
             musical_info['rank'] = musical_link.find('p', class_='rank-best-number').find('span').get_text(strip=True)
             musicals_data.append(musical_info)
             
@@ -76,8 +76,8 @@ for item in items:
         rank = 'No rank provided'
 
     musical_info['title'] = title_link.text.strip() if title_link else 'No title provided'
-    musical_info['image_url'] = image['src'] if image else 'No image provided'
-    musical_info['date_and_location'] = date_location.get_text(strip=True) if date_location else 'No date and location provided'
+    musical_info['ImageURL'] = image['src'] if image else 'No image provided'
+    musical_info['Venue'] = date_location.get_text(strip=True) if date_location else 'No date and location provided'
     musical_info['rank'] = rank
     musicals_data.append(musical_info)
 
