@@ -30,7 +30,7 @@ time.sleep(5)  # 페이지 로딩 대기
 # "전시/클래식/기타" 버튼 클릭
 try:
     concert_button = WebDriverWait(browser, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//button[@value='NEW_GENRE_CON']"))
+        EC.element_to_be_clickable((By.XPATH, "//button[@value='NEW_GENRE_EXH']"))
     )
     concert_button.click()
     print("Clicked '전시/클래식/기타' button.")
