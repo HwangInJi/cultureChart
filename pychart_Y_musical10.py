@@ -1,4 +1,3 @@
-import json
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options as ChromeOptions
@@ -8,21 +7,19 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import time
+import json
 from datetime import datetime
 
 # 현재 날짜 가져오기
 current_date = datetime.now().strftime("%Y-%m-%d")
 filename = f"yes24musical/pychart_Y_musical10{current_date}.json"
 
-# 웹드라이버 설정
+# 웹드라이버 설치
 options = ChromeOptions()
 options.add_argument("--headless")
-service = ChromeService(executable_path=ChromeDriverManager().install())
-browser = webdriver.Chrome(service=service, options=options)
-
-# 웹 사이트 접속
+browser = webdriver.Chrome(options=options)
 browser.get("http://ticket.yes24.com/Rank/All")
-time.sleep(2)  # 페이지 로딩 대기
+time.sleep(5)  # 페이지 로딩 대기
 
 # 뮤지컬 카테고리로 이동
 musical_link = WebDriverWait(browser, 10).until(
