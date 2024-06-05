@@ -34,31 +34,41 @@ try:
     )
     concert_button.click()
     print("Clicked '뮤지컬/연극' button.")
-    time.sleep(3)  # 페이지가 완전히 로드될 때까지 대기
+    time.sleep(5)  # 페이지가 완전히 로드될 때까지 대기
 except Exception as e:
     print("Error clicking '뮤지컬/연극' button:", e)
+    browser.quit()
+    raise
 
 # 페이지 소스 가져오기
-page_source = browser.page_source
+try:
+    page_source = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, ".tbl.tbl_style02 tbody"))
+    ).get_attribute('innerHTML')
+except Exception as e:
+    print("Error loading the table:", e)
+    browser.quit()
+    raise
 
 # BeautifulSoup을 사용하여 HTML 파싱
 soup = BeautifulSoup(page_source, 'html.parser')
 
 # 데이터 추출
 music_data = []
-tracks = soup.select(".tbl.tbl_style02 tbody tr")
+tracks = soup.select("tr")
 for track in tracks:
-    rank = track.select_one("td.fst .ranking").text.strip()
-    title = track.select_one("div.show_infor p.infor_text a").text.strip()
-    place = track.select_one("td:nth-child(4)").text.strip()
-    image_url = track.select_one("div.thumb_90x125 img").get('src')
+    rank = track.select_one("td.fst .ranking").text.strip() if track.select_one("td.fst .ranking") else None
+    title = track.select_one("div.show_infor p.infor_text a").text.strip() if track.select_one("div.show_infor p.infor_text a") else None
+    place = track.select_one("td:nth-child(4)").text.strip() if track.select_one("td:nth-child(4)") else None
+    image_url = track.select_one("div.thumb_90x125 img").get('src') if track.select_one("div.thumb_90x125 img") else None
 
-    music_data.append({
-        "rank": rank,
-        "title": title,
-        "Venue": place,
-        "ImageURL": image_url
-    })
+    if rank and title and place and image_url:
+        music_data.append({
+            "rank": rank,
+            "title": title,
+            "Venue": place,
+            "ImageURL": image_url
+        })
 
 # 데이터를 JSON 파일로 저장
 with open(filename, 'w', encoding='utf-8') as f:
