@@ -61,13 +61,15 @@ for track in tracks:
     title = track.select_one("div.show_infor p.infor_text a").text.strip() if track.select_one("div.show_infor p.infor_text a") else None
     place = track.select_one("td:nth-child(4)").text.strip() if track.select_one("td:nth-child(4)") else None
     image_url = track.select_one("div.thumb_90x125 img").get('src') if track.select_one("div.thumb_90x125 img") else None
+    site_url = "https://ticket.melon.com/ranking/index.htm"
 
-    if rank and title and place and image_url:
+    if rank and title and place and image_url and site_url:
         music_data.append({
             "rank": rank,
             "title": title,
             "Venue": place,
-            "ImageURL": image_url
+            "ImageURL": image_url,
+            "site": site_url
         })
 
 # 데이터를 JSON 파일로 저장
