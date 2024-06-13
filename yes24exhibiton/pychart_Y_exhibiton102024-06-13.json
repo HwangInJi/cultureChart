@@ -4,7 +4,7 @@
         "ImageURL": "http://tkfile.yes24.com/upload2/perfblog/202405/20240528/20240528-49838.jpg",
         "Venue": "2024.06.15~2024.09.08DUEX(홍대 LC TOWER B3F)",
         "rank": "1위",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49838",
+        "site": "http://ticket.yes24.com/Rank/All",
         "change": "-"
     },
     {
@@ -12,7 +12,7 @@
         "ImageURL": "http://tkfile.yes24.com/upload2/perfblog/202405/20240502/20240502-49637.jpg",
         "Venue": "2024.05.30~2024.06.09부산 영화의전당",
         "rank": "2위",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49637",
+        "site": "http://ticket.yes24.com/Rank/All",
         "change": "-"
     },
     {
@@ -20,7 +20,7 @@
         "ImageURL": "http://tkfile.yes24.com/upload2/perfblog/202406/20240607/20240607-49970.jpg",
         "Venue": "2024.06.22~2024.06.23부산 북구 화명생태공원",
         "rank": "3위",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49970",
+        "site": "http://ticket.yes24.com/Rank/All",
         "change": "NEW"
     },
     {
@@ -29,7 +29,7 @@
         "Venue": "2024.06.22~2024.06.23부산 북구 화명생태공원",
         "rank": "4위",
         "change": "NEW",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49968"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "2024 부산 밀 페스티벌_사전예매_밀약과체험",
@@ -37,7 +37,7 @@
         "Venue": "2024.06.22~2024.06.23부산 북구 화명생태공원",
         "rank": "5위",
         "change": "NEW",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49971"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "리얼뱅크시 REAL BANKSY",
@@ -45,7 +45,7 @@
         "Venue": "2024.05.10~2024.10.20그라운드서울 기획전시관 (구.아라아트센터)",
         "rank": "6위",
         "change": "2단계 하락",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49241"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "2024 서울 팝콘(Seoul POPCON)",
@@ -53,7 +53,7 @@
         "Venue": "2024.08.16~2024.08.18서울 코엑스 C홀",
         "rank": "7위",
         "change": "NEW",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49997"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "[분원백자자료관] 2024년 찾아가는 영화관 오!헐리우드〈Oh.Hollywood〉",
@@ -61,7 +61,7 @@
         "Venue": "2024.06.14~2024.06.14분원백자자료관",
         "rank": "8위",
         "change": "NEW",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49752"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "새벽부터 황혼까지 - 스웨덴 국립미술관 컬렉션",
@@ -69,7 +69,7 @@
         "Venue": "2024.03.21~2024.08.25마이아트뮤지엄",
         "rank": "9위",
         "change": "2단계 하락",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=48654"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "스튜디오 지브리 애니메이션의 거장 타카하타 이사오전",
@@ -77,7 +77,7 @@
         "Venue": "2024.04.26~2024.08.03세종문화회관 세종미술관 1관 2관",
         "rank": "10위",
         "change": "4단계 하락",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49133"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "예술인의마을 서촌",
@@ -85,7 +85,7 @@
         "Venue": "2023.01.07~2024.12.31서촌일대",
         "rank": "11위",
         "change": "12단계 상승",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=44664"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "쥬세뻬 비탈레 특별전：나의 새 친구 이야기",
@@ -93,7 +93,7 @@
         "Venue": "2024.03.07~2024.06.27북서울꿈의숲 상상톡톡미술관",
         "rank": "12위",
         "change": "8단계 상승",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=48669"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "그래피티 연금술사，시릴 콩고 Cyril Kongo´s",
@@ -101,7 +101,7 @@
         "Venue": "2024.03.14~2024.06.08뮤지엄웨이브",
         "rank": "13위",
         "change": "1단계 상승",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=48936"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "김지희 개인전 〈DIVINITY〉",
@@ -109,7 +109,7 @@
         "Venue": "2024.06.16~2024.08.25뮤지엄웨이브",
         "rank": "14위",
         "change": "1단계 상승",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49868"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "창경궁 인문학산책 야간편",
@@ -117,7 +117,7 @@
         "Venue": "2023.02.06~2024.12.31창경궁",
         "rank": "15위",
         "change": "11단계 상승",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=44945"
+        "site": "http://ticket.yes24.com/Rank/All"
     },
     {
         "title": "하리보 해피월드 인 제주",
@@ -125,6 +125,6 @@
         "Venue": "2024.07.04~2024.12.31제주 하리보 해피월드",
         "rank": "16위",
         "change": "2단계 상승",
-        "site": "http://ticket.yes24.com/pages/perf/detail/detail.aspx?IdPerf=49833"
+        "site": "http://ticket.yes24.com/Rank/All"
     }
 ]
