@@ -21,6 +21,8 @@ filename = f"{directory}/pychart_Y_exhibiton10{current_date}.json"
 # 웹드라이버 설치
 options = ChromeOptions()
 options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
 browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
 browser.get("http://ticket.yes24.com/Rank/All")
 time.sleep(5)  # 페이지 로딩 대기
@@ -97,7 +99,6 @@ try:
                     # 변동 상태 추출
                     change_class = fluctuation_div.find_all('p')[-1].get('class', [])
                     if 'rank-list-number-new' in change_class:
-                        change =
                         change = 'NEW'
                     elif 'rank-list-number-up' in change_class:
                         change_value = fluctuation_div.find('p', class_='rank-list-number-up').text.strip()
