@@ -54,8 +54,21 @@ if rank_best_div:
             event_info['ImageURL'] = event_link.find('img')['src']
             event_info['Venue'] = event_link.find('p', class_='rlb-sub-tit').get_text(strip=True)
             event_info['rank'] = event_link.find('p', class_='rank-best-number').find('span').get_text(strip=True)
+            event_info['site'] = "http://ticket.yes24.com/Rank/All"
+            change_status = event_link.find('span', class_='rank-best-number-new')
+            if change_status:
+                event_info['change'] = 'NEW'
+            else:
+                change = event_link.find('span', {'class': ['rank-best-number-up', 'rank-best-number-down']})
+                if change:
+                    if 'rank-best-number-up' in change['class']:
+                        event_info['change'] = f"{change.get_text(strip=True)}단계 상승"
+                    elif 'rank-best-number-down' in change['class']:
+                        event_info['change'] = f"{change.get_text(strip=True)}단계 하락"
+                else:
+                    event_info['change'] = '-'
             events_data.append(event_info)
-
+            
 # 전체 전시/행사 순위 정보 추출
 rank_lists = soup.find_all('div', class_='rank-list')  # 모든 rank-list 컨테이너 선택
 for rank_list in rank_lists:
@@ -70,14 +83,30 @@ for rank_list in rank_lists:
         # 순위 정보를 추출
         if fluctuation_div:
             rank_span = fluctuation_div.find('p').find('span')  # 첫 번째 <p> 태그 내의 <span>에서 순위를 찾는다.
-            rank = rank_span.text.strip() if rank_span else 'No rank provided'
+            rank = rank_span.text.strip() if rank_span else '순위 정보 없음'
+            
+            # 변동 상태 추출
+            change_class = fluctuation_div.find_all('p')[-1].get('class', [])
+            if 'rank-list-number-new' in change_class:
+                change = 'NEW'
+            elif 'rank-list-number-up' in change_class:
+                change_value = fluctuation_div.find('p', class_='rank-list-number-up').text.strip()
+                change = f"{change_value}단계 상승"
+            elif 'rank-list-number-down' in change_class:
+                change_value = fluctuation_div.find('p', class_='rank-list-number-down').text.strip()
+                change = f"{change_value}단계 하락"
+            else:
+                change = '-'
         else:
-            rank = 'No rank provided'
+            rank = '순위 정보 없음'
+            change = '-'
 
-        event_info['title'] = title_link.text.strip() if title_link else 'No title provided'
-        event_info['ImageURL'] = image['src'] if image else 'No image provided'
-        event_info['Venue'] = date_location.get_text(strip=True) if date_location else 'No date and location provided'
+        event_info['title'] = title_link.text.strip() if title_link else '제목 정보 없음'
+        event_info['ImageURL'] = image['src'] if image else '이미지 정보 없음'
+        event_info['Venue'] = date_location.get_text(strip=True) if date_location else '날짜 및 장소 정보 없음'
         event_info['rank'] = rank
+        event_info['change'] = change
+        event_info['site'] = "http://ticket.yes24.com/Rank/All"
         events_data.append(event_info)
 
 # JSON 파일로 저장
