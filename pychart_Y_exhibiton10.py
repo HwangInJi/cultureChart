@@ -16,7 +16,7 @@ current_date = datetime.now().strftime("%Y-%m-%d")
 directory = "yes24exhibiton"
 if not os.path.exists(directory):
     os.makedirs(directory)
-filename = f"{directory}/pychart_Y_exhibiton10{current_date}.json"
+filename = f"{directory}/pychart_Y_exhibiton10_{current_date}.json"
 
 # 웹드라이버 설치
 options = ChromeOptions()
@@ -24,8 +24,7 @@ options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
-base_url = "http://ticket.yes24.com"
-browser.get(f"{base_url}/Rank/All")  # 페이지를 고정된 URL로 열기
+browser.get("http://ticket.yes24.com/Rank/All")  # 페이지를 고정된 URL로 열기
 time.sleep(5)  # 페이지 로딩 대기
 
 try:
@@ -63,7 +62,7 @@ try:
                     event_info['ImageURL'] = event_link.find('img')['src'] if event_link.find('img') else 'No image provided'
                     event_info['Venue'] = event_link.find('p', class_='rlb-sub-tit').get_text(strip=True) if event_link.find('p', class_='rlb-sub-tit') else 'No venue provided'
                     event_info['rank'] = event_link.find('p', class_='rank-best-number').find('span').get_text(strip=True) if event_link.find('p', class_='rank-best-number') else 'No rank provided'
-                    event_info['site'] = f"{base_url}{event_link['href']}" if 'href' in event_link.attrs else 'No link provided'
+                    event_info['site'] = event_link['href'] if 'href' in event_link.attrs else 'No link provided'
                     change_status = event_link.find('span', class_='rank-best-number-new')
                     if change_status:
                         event_info['change'] = 'NEW'
@@ -118,7 +117,7 @@ try:
                 event_info['Venue'] = date_location.get_text(strip=True) if date_location else 'No date and location provided'
                 event_info['rank'] = rank
                 event_info['change'] = change
-                event_info['site'] = f"{base_url}{title_link['href']}" if title_link and 'href' in title_link.attrs else 'No link provided'
+                event_info['site'] = title_link['href'] if title_link and 'href' in title_link.attrs else 'No link provided'
                 events_data.append(event_info)
             except Exception as e:
                 print(f"Error processing event: {e}")
