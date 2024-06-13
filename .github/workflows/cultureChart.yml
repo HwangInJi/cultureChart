@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
         
@@ -53,7 +53,7 @@ jobs:
         python pychart_Y_musical10.py
 
     - name: commits
-      run : |
+      run: |
         git config --global user.email "dlswl1993@gmail.com"
         git config --global user.name "HwangInJi" 
         git add melonconcert/pychart_M_concert10*.json
@@ -71,4 +71,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         branch: "main"
-        github_token: $
+        github_token: ${{ secrets.GITHUB_TOKEN }}
