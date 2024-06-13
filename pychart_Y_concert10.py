@@ -45,7 +45,7 @@ concerts_data = []
 # 1-3위 콘서트 데이터 추출
 rank_best_div = soup.find('div', class_='rank-best')
 if rank_best_div:
-    concert_divs = rank_best_div.find_all('div')
+    concert_divs = rank_best_div.find_all('div', recursive=False)
     for concert_div in concert_divs:
         concert_info = {}
         concert_link = concert_div.find('a', href=True)
@@ -54,6 +54,19 @@ if rank_best_div:
             concert_info['ImageURL'] = concert_link.find('img')['src']
             concert_info['Venue'] = concert_link.find('p', class_='rlb-sub-tit').get_text(strip=True)
             concert_info['rank'] = concert_link.find('p', class_='rank-best-number').find('span').get_text(strip=True)
+            concert_info['site'] = "http://ticket.yes24.com/Rank/All"  # 공통 URL로 설정
+            change_status = concert_link.find('span', class_='rank-best-number-new')
+            if change_status:
+                concert_info['change'] = 'NEW'
+            else:
+                change = concert_link.find('span', {'class': ['rank-best-number-up', 'rank-best-number-down']})
+                if change:
+                    if 'rank-best-number-up' in change['class']:
+                        concert_info['change'] = f"{change.get_text(strip=True)}단계 상승"
+                    elif 'rank-best-number-down' in change['class']:
+                        concert_info['change'] = f"{change.get_text(strip=True)}단계 하락"
+                else:
+                    concert_info['change'] = '-'
             concerts_data.append(concert_info)
 
 # 전체 콘서트 순위 정보 추출
@@ -71,13 +84,29 @@ for rank_list in rank_lists:
         if fluctuation_div:
             rank_span = fluctuation_div.find('p').find('span')  # 첫 번째 <p> 태그 내의 <span>에서 순위를 찾는다.
             rank = rank_span.text.strip() if rank_span else 'No rank provided'
+            
+            # 변동 상태 추출
+            change_class = fluctuation_div.find_all('p')[-1].get('class', [])
+            if 'rank-list-number-new' in change_class:
+                change = 'NEW'
+            elif 'rank-list-number-up' in change_class:
+                change_value = fluctuation_div.find('p', class_='rank-list-number-up').text.strip()
+                change = f"{change_value}단계 상승"
+            elif 'rank-list-number-down' in change_class:
+                change_value = fluctuation_div.find('p', class_='rank-list-number-down').text.strip()
+                change = f"{change_value}단계 하락"
+            else:
+                change = '-'
         else:
             rank = 'No rank provided'
+            change = '-'
 
         concert_info['title'] = title_link.text.strip() if title_link else 'No title provided'
         concert_info['ImageURL'] = image['src'] if image else 'No image provided'
         concert_info['Venue'] = date_location.get_text(strip=True) if date_location else 'No date and location provided'
         concert_info['rank'] = rank
+        concert_info['change'] = change
+        concert_info['site'] = "http://ticket.yes24.com/Rank/All"  # 공통 URL로 설정
         concerts_data.append(concert_info)
 
 # JSON 파일로 저장
